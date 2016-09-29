@@ -36,10 +36,11 @@ import java.text.DecimalFormat;
 import java.util.LinkedHashMap;
 import java.util.Timer;
 
+import org.bukkit.Location;
 import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.craftbukkit.CraftServer;
+import org.bukkit.craftbukkit.v1_10_R1.CraftServer;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.Plugin;
@@ -99,7 +100,7 @@ public class iConomy extends JavaPlugin {
             Server = getServer();
 
             if(getServer().getServerName().equalsIgnoreCase("craftbukkit")) {
-                TerminalSupport = ((CraftServer)getServer()).getReader().getTerminal().isANSISupported();
+                TerminalSupport = ((CraftServer)getServer()).getReader().getTerminal().isAnsiSupported();
             }
 
             // Get general plugin information
@@ -309,6 +310,7 @@ public class iConomy extends JavaPlugin {
     }
 
     public boolean onConversion() {
+        Player p;
         if(!Constants.Nodes.Convert.getBoolean())
             return false;
 
@@ -344,7 +346,7 @@ public class iConomy extends JavaPlugin {
                 Connection old = null;
 
                 try {
-                    old = (username.isEmpty() && password.isEmpty()) ? 
+                    old = (username.isEmpty() && password.isEmpty()) ?
                     DriverManager.getConnection(url) :
                     DriverManager.getConnection(url, username, password);
                 } catch (SQLException ex) {

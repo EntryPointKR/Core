@@ -7,11 +7,7 @@ import com.iCo6.iConomy;
 import com.iCo6.util.Template;
 
 import java.text.DecimalFormat;
-import java.util.LinkedHashMap;
-import java.util.HashMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.TimerTask;
+import java.util.*;
 
 public class Interest extends TimerTask {
     Template Template = null;
@@ -28,7 +24,7 @@ public class Interest extends TimerTask {
         LinkedHashMap<String, HashMap<String, Object>> queries = new LinkedHashMap<String, HashMap<String, Object>>();
 
         if(Constants.Nodes.InterestOnline.getBoolean()) {
-            Player[] player = iConomy.Server.getOnlinePlayers();
+            Collection<? extends Player> player = iConomy.Server.getOnlinePlayers();
             
             for(Player p : player) {
                 players.add(p.getName());
