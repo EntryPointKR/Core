@@ -150,57 +150,59 @@ public class iConomy extends JavaPlugin {
                     }
             }
 
+
+
             // Setup Commands
-            Commands.add("/money +name", new Money(this));
+            Commands.add("/돈 +name", new Money(this));
             Commands.setPermission("money", "iConomy.holdings");
             Commands.setPermission("money+", "iConomy.holdings.others");
-            Commands.setHelp("money", new String[] { "", "Check your balance." });
-            Commands.setHelp("money+", new String[] { " [name]", "Check others balance." });
+            Commands.setHelp("돈", new String[] { "", "당신의 금액을 확인합니다." });
+            Commands.setHelp("돈+", new String[] { " [닉네임]", "다른 사람의 보유금을 확인합니다." });
 
-            Commands.add("/money -h|?|help +command", new Help(this));
+            Commands.add("/돈 -h|?|help|도움말 +command", new Help(this));
             Commands.setPermission("help", "iConomy.help");
-            Commands.setHelp("help", new String[] { " (command)", "For Help & Information." });
+            Commands.setHelp("도움말", new String[] { " (명령어)", "도움말 & 정보를 확인합니다." });
 
-            Commands.add("/money -t|top", new Top(this));
+            Commands.add("/돈 -t|top|순위", new Top(this));
             Commands.setPermission("top", "iConomy.top");
-            Commands.setHelp("top", new String[] { "", "View top economical accounts." });
+            Commands.setHelp("순위", new String[] { "", "경제력(돈) 순위를 확인합니다" });
 
-            Commands.add("/money -p|pay +name +amount:empty", new Payment(this));
+            Commands.add("/돈 -p|pay|보내기 +name +amount:empty", new Payment(this));
             Commands.setPermission("pay", "iConomy.payment");
-            Commands.setHelp("pay", new String[] { " [name] [amount]", "Send money to others." });
+            Commands.setHelp("보내기", new String[] { " [닉네임] [액수]", "다른 사람에게 자신의 돈을 보냅니다." });
 
-            Commands.add("/money -c|create +name", new Create(this));
+            Commands.add("/돈 -c|create|만들기 +name", new Create(this));
             Commands.setPermission("create", "iConomy.accounts.create");
-            Commands.setHelp("create", new String[] { " [name]", "Create an account." });
+            Commands.setHelp("만들기", new String[] { " [닉네임]", "계정을 만듭니다." });
 
-            Commands.add("/money -r|remove +name", new Remove(this));
+            Commands.add("/돈 -r|remove|지우기|삭제 +name", new Remove(this));
             Commands.setPermission("remove", "iConomy.accounts.remove");
-            Commands.setHelp("remove", new String[] { " [name]", "Remove an account." });
+            Commands.setHelp("삭제", new String[] { " [닉네임]", "계정을 제거합니다." });
 
-            Commands.add("/money -g|give +name +amount:empty", new Give(this));
+            Commands.add("/돈 -g|give|주기 +name +amount:empty", new Give(this));
             Commands.setPermission("give", "iConomy.accounts.give");
-            Commands.setHelp("give", new String[] { " [name] [amount]", "Give money." });
+            Commands.setHelp("주기", new String[] { " [닉네임] [액수]", "해당 계정에 돈을 보냅니다." });
 
-            Commands.add("/money -t|take +name +amount:empty", new Take(this));
+            Commands.add("/돈 -t|take|뺏기 +name +amount:empty", new Take(this));
             Commands.setPermission("take", "iConomy.accounts.take");
-            Commands.setHelp("take", new String[] { " [name] [amount]", "Take money." });
+            Commands.setHelp("뺏기", new String[] { " [닉네임] [액수]", "해당 계정의 돈을 뺏습니다." });
 
-            Commands.add("/money -s|set +name +amount:empty", new Set(this));
+            Commands.add("/돈 -s|set|설정 +name +amount:empty", new Set(this));
             Commands.setPermission("set", "iConomy.accounts.set");
-            Commands.setHelp("set", new String[] { " [name] [amount]", "Set account balance." });
+            Commands.setHelp("설정", new String[] { " [닉네임] [액수]", "해당 계정의 돈을 설정합니다." });
 
-            Commands.add("/money -u|status +name +status:empty", new Status(this));
+            Commands.add("/돈 -u|status|상태 +name +status:empty", new Status(this));
             Commands.setPermission("status", "iConomy.accounts.status");
             Commands.setPermission("status+", "iConomy.accounts.status.set");
-            Commands.setHelp("status", new String[] { " [name] (status)", "Check/Set account status." });
+            Commands.setHelp("상태", new String[] { " [닉네임] (status)", "해당 계정의 정보를 보거나 설정합니다." });
 
-            Commands.add("/money -x|purge", new Purge(this));
+            Commands.add("/돈 -x|purge|전체초기화", new Purge(this));
             Commands.setPermission("purge", "iConomy.accounts.purge");
-            Commands.setHelp("purge", new String[] { "", "Purge all accounts with initial holdings." });
+            Commands.setHelp("전체초기화", new String[] { "", "모든 계정의 돈을 초기화합니다." });
 
-            Commands.add("/money -e|empty", new Empty(this));
+            Commands.add("/돈 -e|empty|초기화", new Empty(this));
             Commands.setPermission("empty", "iConomy.accounts.empty");
-            Commands.setHelp("empty", new String[] { "", "Empty database of accounts." });
+            Commands.setHelp("초기화", new String[] { "", "해당 계정의 돈을 초기화합니다." });
 
             // Setup Database.
             try {
